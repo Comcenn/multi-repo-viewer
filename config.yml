@@ -1,7 +1,7 @@
 github:
   host: "https://api.github.com/"
   graphql: "graphql"
-  token: "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"
+  token: ""
   owner: "Comcenn"
   repositories:
     - Master_Slave
