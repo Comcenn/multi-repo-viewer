@@ -26,7 +26,7 @@ func reduceResults(alertsMap map[string]interface{}) map[string]int {
 
 func task(repoName string, cfg *config.Config, c chan map[string]int) {
 	git_client := git.CreateGit(cfg, ErrorHandler)
-	alerts := git_client.GetDependabotAlerts(repoName)
+	alerts := git_client.GetDependabotAlerts(cfg.Github.Owner, repoName)
 	fmt.Println(repoName, ": ", alerts)
 	c <- reduceResults(alerts)
 }
