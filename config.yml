@@ -1,0 +1,6 @@
+github:
+  host: "https://api.github.com/"
+  graphql: "graphql"
+  token: "GitHubTokenGoesHere"
+  repositories:
+    - Master_Slave
