@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-const DEPENDABOT_QUERY = `{"query": "query { repository(owner: \"Rentecarlo\", name:\"%s\") { vulnerabilityAlerts(first:20, states: OPEN) { nodes { number state securityVulnerability{ severity }}}}}"}`
+const DEPENDABOT_QUERY = `{"query": "query { repository(owner: \"Rentecarlo\", name:\"%s\") { vulnerabilityAlerts(first:20, states: OPEN) { nodes { number state createdAt securityVulnerability{ severity }}}}}"}`
 
 type Git struct {
 	config       *config.Config
