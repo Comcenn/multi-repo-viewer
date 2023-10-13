@@ -14,12 +14,13 @@ type Config struct {
 		Host         string   `yaml:"host"`
 		Graphql      string   `yaml:"graphql"`
 		Token        string   `yaml:"token"`
+		Owner        string   `yaml:"owner"`
 		Repositories []string `yaml:"repositories"`
 	} `yaml:"github"`
 }
 
 func (c Config) String() string {
-	return fmt.Sprintf("Github:\n\tHost: %v\n\tGraphql: %v\n\tToken: %v\n", c.Github.Host, c.Github.Graphql, c.Github.Token)
+	return fmt.Sprintf("Github:\n\tHost: %v\n\tGraphql: %v\n\tToken: %v\n\tOwner: %v", c.Github.Host, c.Github.Graphql, c.Github.Token, c.Github.Owner)
 }
 
 func processError(err error) {

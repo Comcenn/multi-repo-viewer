@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-const DEPENDABOT_QUERY = `{"query": "query { repository(owner: \"Rentecarlo\", name:\"%s\") { vulnerabilityAlerts(first:20, states: OPEN) { nodes { number state createdAt securityVulnerability{ severity }}}}}"}`
+const DEPENDABOT_QUERY = `{"query": "query { repository(owner: \"%s\", name:\"%s\") { vulnerabilityAlerts(first:20, states: OPEN) { nodes { number state createdAt securityVulnerability{ severity }}}}}"}`
 
 type Git struct {
 	config       *config.Config
@@ -31,8 +31,8 @@ func (g Git) makeRequest(req *http.Request) (*http.Response, error) {
 	return resp, err
 }
 
-func (g Git) getDependabotQuery(repo string) string {
-	return fmt.Sprintf(DEPENDABOT_QUERY, repo)
+func (g Git) getDependabotQuery(owner string, repo string) string {
+	return fmt.Sprintf(DEPENDABOT_QUERY, owner, repo)
 }
 
 func (g Git) parseJson(data []byte) map[string]interface{} {
@@ -41,8 +41,8 @@ func (g Git) parseJson(data []byte) map[string]interface{} {
 	return jsonMap
 }
 
-func (g Git) GetDependabotAlerts(repo string) map[string]interface{} {
-	query := g.getDependabotQuery(repo)
+func (g Git) GetDependabotAlerts(owner string, repo string) map[string]interface{} {
+	query := g.getDependabotQuery(owner, repo)
 	req := g.createGraphQlRequest(query)
 	resp, err := g.makeRequest(req)
 	if err != nil {

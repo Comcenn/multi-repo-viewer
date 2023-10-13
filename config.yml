@@ -1,6 +1,7 @@
 github:
   host: "https://api.github.com/"
   graphql: "graphql"
-  token: "GitHubTokenGoesHere"
+  token: ""
+  owner: "Comcenn"
   repositories:
     - Master_Slave
